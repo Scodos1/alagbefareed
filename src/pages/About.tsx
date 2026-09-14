@@ -41,22 +41,19 @@ export default function About() {
       <section className="max-w-3xl mx-auto px-5 sm:px-8 py-8">
         <div className="prose-editorial">
           <p className="serif text-2xl leading-relaxed text-[color:var(--color-muted)]">
-            <TypeReveal text={settings?.bio || ''} as="span" speed={18} />
+            {settings?.bio}
           </p>
 
           <h2>Philosophy</h2>
-          <p><TypeReveal text={settings?.philosophy || ''} as="span" speed={18} /></p>
+          <p>{settings?.philosophy}</p>
 
           <h2>Currently</h2>
-          <p><TypeReveal text={settings?.current_focus || ''} as="span" speed={18} /></p>
+          <p>{settings?.current_focus}</p>
         </div>
       </section>
 
       <section className="max-w-3xl mx-auto px-5 sm:px-8 py-20">
-        <SectionTitle eyebrow="Skills">
-          <TypeReveal text="A short list of" as="span" /><br />
-          <TypeReveal text="things I do well." as="span" className="italic" />
-        </SectionTitle>
+        <SectionTitle eyebrow="Skills">A short list of<br /><span className="italic">things I do well.</span></SectionTitle>
         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
           {Object.entries(skillsByCategory).map(([cat, list]) => (
             <div key={cat}>
@@ -70,10 +67,7 @@ export default function About() {
       </section>
 
       <section className="max-w-3xl mx-auto px-5 sm:px-8 py-20 border-t border-[color:var(--color-border)]">
-        <SectionTitle eyebrow="Trajectory">
-          <TypeReveal text="Where I've" as="span" /><br />
-          <TypeReveal text="spent my time." as="span" className="italic" />
-        </SectionTitle>
+        <SectionTitle eyebrow="Trajectory">Where I've<br /><span className="italic">spent my time.</span></SectionTitle>
         <div className="space-y-10">
           {experience.map((e) => (
             <div key={e.id} className="grid grid-cols-[100px_1fr] gap-6">
@@ -82,7 +76,7 @@ export default function About() {
                 <span className="text-[color:var(--color-subtle)]">– {e.current ? 'now' : e.end_date ? new Date(e.end_date).getFullYear() : ''}</span>
               </div>
               <div>
-                <div className="serif text-2xl leading-tight"><TypeReveal text={e.role} as="span" /></div>
+                <div className="serif text-2xl leading-tight">{e.role}</div>
                 <div className="text-sm text-[color:var(--color-muted)] mt-0.5">{e.company}{e.location ? ` · ${e.location}` : ''}</div>
                 <p className="mt-3 text-[color:var(--color-fg)] leading-relaxed">{e.description}</p>
               </div>

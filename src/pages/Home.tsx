@@ -178,8 +178,7 @@ export default function Home() {
             eyebrow="$ selected-work"
             action={<Link to="/projects" className="mono text-xs uppercase tracking-widest text-[color:var(--color-muted)] hover:text-[color:var(--color-fg)] inline-flex items-center gap-1">All projects <ArrowUpRight size={14} /></Link>}
           >
-            <TypeReveal text="Case studies from" as="span" /><br />
-            <TypeReveal text="production systems." as="span" className="italic" />
+            Case studies from<br /><span className="italic">production systems.</span>
           </SectionTitle>
         </Reveal>
 
@@ -208,8 +207,7 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-5 sm:px-8 py-20 border-t border-[color:var(--color-border)]">
         <Reveal>
           <SectionTitle eyebrow="$ capabilities">
-            <TypeReveal text="A generalist mindset," as="span" /><br />
-            <TypeReveal text="specialised depth." as="span" className="italic" />
+            A generalist mindset,<br /><span className="italic">specialised depth.</span>
           </SectionTitle>
         </Reveal>
 
@@ -238,8 +236,7 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] mb-6">$ get-in-touch</div>
             <p className="serif text-[clamp(2.5rem,6vw,5rem)] leading-[1] tracking-tight">
-              <TypeReveal text="Have a system that needs" as="span" /><br />
-              <TypeReveal text="someone who cares?" as="span" className="italic text-[color:var(--color-accent)]" />
+              Have a system that needs<br /><span className="italic text-[color:var(--color-accent)]">someone who cares?</span>
             </p>
             <Magnetic className="inline-block mt-10">
               <Link

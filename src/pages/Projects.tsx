@@ -30,7 +30,7 @@ export default function Projects() {
           <TypeReveal text="Projects, each one" as="span" /><br />with a <TypeReveal text="reason it exists." as="span" className="italic" />
         </h1>
         <p className="mt-6 text-[color:var(--color-muted)] max-w-xl">
-          <TypeReveal text="These are systems I designed, shipped and iterated on — either at companies or under my own name. Filter by discipline or by stack." as="span" speed={16} />
+          These are systems I designed, shipped and iterated on — either at companies or under my own name. Filter by discipline or by stack.
         </p>
       </section>
 

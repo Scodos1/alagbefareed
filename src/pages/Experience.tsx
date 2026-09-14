@@ -26,7 +26,7 @@ export default function Experience() {
           <TypeReveal text="Eight years" as="span" /><br />of <TypeReveal text="shipping software." as="span" className="italic" />
         </h1>
         <p className="mt-6 text-[color:var(--color-muted)]">
-          <TypeReveal text="From backend platform teams to founding engineer roles — here's what I've been up to." as="span" speed={18} />
+          From backend platform teams to founding engineer roles — here's what I've been up to.
         </p>
       </section>
 
@@ -44,7 +44,7 @@ export default function Experience() {
                   {e.location && <div className="mono text-xs text-[color:var(--color-subtle)] mt-1">{e.location}</div>}
                 </div>
                 <div>
-                  <h2 className="serif text-3xl leading-tight"><TypeReveal text={e.role} as="span" /></h2>
+                  <h2 className="serif text-3xl leading-tight">{e.role}</h2>
                   <div className="text-lg text-[color:var(--color-muted)] mt-1">{e.company}</div>
                   <p className="mt-4 leading-relaxed">{e.description}</p>
                   {e.responsibilities && e.responsibilities.length > 0 && (

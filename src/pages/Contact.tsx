@@ -60,8 +60,7 @@ export default function Contact() {
           <TypeReveal text="Let's talk about" as="span" /><br />the <TypeReveal text="thing you're building." as="span" className="italic" />
         </h1>
         <p className="mt-6 text-[color:var(--color-muted)] max-w-xl">
-          <TypeReveal text="I read every message. Usually reply within a business day. Prefer email?" as="span" speed={18} />
-          {settings?.email && (<a className="link-underline" href={`mailto:${settings.email}`}>{settings.email}</a>)}
+          I read every message. Usually reply within a business day. Prefer email? {settings?.email && (<a className="link-underline" href={`mailto:${settings.email}`}>{settings.email}</a>)}
         </p>
       </section>
 
