@@ -68,13 +68,13 @@ export default function About() {
         <SectionTitle eyebrow="Trajectory">Where I've<br /><span className="italic">spent my time.</span></SectionTitle>
         <div className="space-y-10">
           {experience.map((e) => (
-            <div key={e.id} className="grid grid-cols-[100px_1fr] gap-6">
-              <div className="mono text-xs text-[color:var(--color-muted)] pt-1">
-                {new Date(e.start_date).getFullYear()}<br />
-                <span className="text-[color:var(--color-subtle)]">– {e.current ? 'now' : e.end_date ? new Date(e.end_date).getFullYear() : ''}</span>
+            <div key={e.id} className="grid grid-cols-1 md:grid-cols-[100px_1fr] gap-2 md:gap-6">
+              <div className="mono text-xs text-[color:var(--color-muted)] md:pt-1">
+                {new Date(e.start_date).getFullYear()}
+                <span className="text-[color:var(--color-subtle)]"> – {e.current ? 'now' : e.end_date ? new Date(e.end_date).getFullYear() : ''}</span>
               </div>
               <div>
-                <div className="serif text-2xl leading-tight">{e.role}</div>
+                <div className="serif text-xl sm:text-2xl leading-tight">{e.role}</div>
                 <div className="text-sm text-[color:var(--color-muted)] mt-0.5">{e.company}{e.location ? ` · ${e.location}` : ''}</div>
                 <p className="mt-3 text-[color:var(--color-fg)] leading-relaxed">{e.description}</p>
               </div>

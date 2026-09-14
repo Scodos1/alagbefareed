@@ -127,7 +127,7 @@ export default function Home() {
             <motion.aside className="lg:col-span-5 lg:pt-8 w-full" variants={item}>
               <Terminal lines={termLines} />
               {stats && (
-                <div className="mt-8 grid grid-cols-3 gap-4">
+                <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-4">
                   <div>
                     <div className="serif text-3xl">{stats.projects}</div>
                     <div className="mono text-[10px] uppercase tracking-widest text-[color:var(--color-muted)] mt-1">Projects</div>
@@ -149,7 +149,7 @@ export default function Home() {
 
       {/* Rolling ticker of technologies */}
       <section className="border-y border-[color:var(--color-border)] py-4 bg-[color:var(--color-surface)]">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 flex items-center gap-6">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 flex items-center gap-3 sm:gap-6">
           <span className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] shrink-0">
             <span className="text-[color:var(--color-accent)]">$ </span>stack --today
           </span>
@@ -230,7 +230,7 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] mb-6">$ get-in-touch</div>
             <p className="serif text-[clamp(2.5rem,6vw,5rem)] leading-[1] tracking-tight">
-              Have a system that needs<br /><span className="italic text-[color:var(--color-accent)]">someone who cares?</span>
+              Have a system that needs{' '}<span className="italic text-[color:var(--color-accent)]">someone who cares?</span>
             </p>
             <Magnetic className="inline-block mt-10">
               <Link

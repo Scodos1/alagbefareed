@@ -108,7 +108,7 @@ export default function Contact() {
                 <textarea
                   value={form.message}
                   onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-                  rows={6}
+                  rows={4}
                   className="w-full bg-transparent border-b border-[color:var(--color-border-strong)] py-2 focus:outline-none focus:border-[color:var(--color-accent)] resize-none"
                 />
               </Field>

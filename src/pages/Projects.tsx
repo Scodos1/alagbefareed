@@ -35,7 +35,7 @@ export default function Projects() {
 
       <section className="max-w-6xl mx-auto px-5 sm:px-8 pb-10">
         <div className="border-y border-[color:var(--color-border)] py-4 flex flex-col sm:flex-row gap-6 items-start sm:items-center flex-wrap">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] mr-1">Category</span>
             {categories.map((c) => (
               <button

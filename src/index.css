@@ -180,6 +180,9 @@ html {
   transform-style: preserve-3d;
   will-change: transform;
 }
+@media (hover: none) {
+  .tilt-card { transform: none !important; }
+}
 
 /* Editorial article prose */
 .prose-editorial {
@@ -233,6 +236,12 @@ html {
   font-style: italic;
 }
 .prose-editorial img { border: 1px solid var(--color-border); border-radius: 6px; margin: 1.5em 0; }
+
+@media (max-width: 640px) {
+  .prose-editorial h1 { font-size: 1.7rem; }
+  .prose-editorial h2 { font-size: 1.35rem; }
+  .prose-editorial blockquote { font-size: 1.1rem; }
+}
 
 /* Boot screen — zoom/scale transition */
 .boot-zoom-out {

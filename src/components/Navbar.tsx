@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <AfLogo className="w-8 h-8 rounded-md" />
-          <span className="font-medium tracking-tight">Alagbe Fareed Adebayo</span>
+          <span className="font-medium tracking-tight hidden sm:inline">Alagbe Fareed Adebayo</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
