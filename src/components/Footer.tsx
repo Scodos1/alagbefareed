@@ -47,9 +47,6 @@ export default function Footer() {
           <p className="mono text-xs text-[color:var(--color-subtle)]">
             © {year} — Built with React, TypeScript, Postgres. Content served over REST from a live database.
           </p>
-          <Link to="/login" className="mono text-xs text-[color:var(--color-subtle)] hover:text-[color:var(--color-fg)]">
-            /admin
-          </Link>
         </div>
       </div>
     </footer>
