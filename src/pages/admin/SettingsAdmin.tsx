@@ -88,6 +88,9 @@ export default function SettingsAdmin() {
           <Field label="GitHub URL"><input value={form.social_links?.github || ''} onChange={(e) => updateSocial('github', e.target.value)} className={inputClass + ' mono text-sm'} /></Field>
           <Field label="LinkedIn URL"><input value={form.social_links?.linkedin || ''} onChange={(e) => updateSocial('linkedin', e.target.value)} className={inputClass + ' mono text-sm'} /></Field>
           <Field label="Twitter / X URL"><input value={form.social_links?.twitter || ''} onChange={(e) => updateSocial('twitter', e.target.value)} className={inputClass + ' mono text-sm'} /></Field>
+          <Field label="Instagram URL"><input value={form.social_links?.instagram || ''} onChange={(e) => updateSocial('instagram', e.target.value)} className={inputClass + ' mono text-sm'} /></Field>
+          <Field label="WhatsApp URL"><input value={form.social_links?.whatsapp || ''} onChange={(e) => updateSocial('whatsapp', e.target.value)} className={inputClass + ' mono text-sm'} /></Field>
+          <Field label="iMessage (mailto:)"><input value={form.social_links?.imessage || ''} onChange={(e) => updateSocial('imessage', e.target.value)} className={inputClass + ' mono text-sm'} /></Field>
         </Card>
 
         <Card title="Résumé">

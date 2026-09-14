@@ -137,6 +137,9 @@ export default function Contact() {
                 {social.github && <li><a href={social.github} target="_blank" rel="noreferrer" className="link-underline">GitHub</a></li>}
                 {social.linkedin && <li><a href={social.linkedin} target="_blank" rel="noreferrer" className="link-underline">LinkedIn</a></li>}
                 {social.twitter && <li><a href={social.twitter} target="_blank" rel="noreferrer" className="link-underline">Twitter / X</a></li>}
+                {social.instagram && <li><a href={social.instagram} target="_blank" rel="noreferrer" className="link-underline">Instagram</a></li>}
+                {social.whatsapp && <li><a href={social.whatsapp} target="_blank" rel="noreferrer" className="link-underline">WhatsApp</a></li>}
+                {social.imessage && <li><a href={social.imessage} className="link-underline">iMessage</a></li>}
               </ul>
             </div>
           </aside>

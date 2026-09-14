@@ -39,6 +39,9 @@ export default function Footer() {
               {social.github && <li><a href={social.github} target="_blank" rel="noreferrer" className="hover:text-[color:var(--color-accent)]">GitHub</a></li>}
               {social.linkedin && <li><a href={social.linkedin} target="_blank" rel="noreferrer" className="hover:text-[color:var(--color-accent)]">LinkedIn</a></li>}
               {social.twitter && <li><a href={social.twitter} target="_blank" rel="noreferrer" className="hover:text-[color:var(--color-accent)]">Twitter / X</a></li>}
+              {social.instagram && <li><a href={social.instagram} target="_blank" rel="noreferrer" className="hover:text-[color:var(--color-accent)]">Instagram</a></li>}
+              {social.whatsapp && <li><a href={social.whatsapp} target="_blank" rel="noreferrer" className="hover:text-[color:var(--color-accent)]">WhatsApp</a></li>}
+              {social.imessage && <li><a href={social.imessage} className="hover:text-[color:var(--color-accent)]">iMessage</a></li>}
               {settings?.email && <li><a href={`mailto:${settings.email}`} className="hover:text-[color:var(--color-accent)]">Email</a></li>}
             </ul>
           </div>
