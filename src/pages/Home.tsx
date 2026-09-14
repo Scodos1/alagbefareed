@@ -74,7 +74,27 @@ export default function Home() {
           <div className="flex flex-col gap-10">
             {/* Hero text + terminal side by side on desktop */}
             <div className="grid lg:grid-cols-12 gap-10 items-start">
-              <div className="lg:col-span-7">
+              <div className="lg:col-span-5 lg:pt-8 w-full order-1 lg:order-2">
+                <Terminal lines={termLines} />
+                {stats && (
+                  <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-4">
+                    <div>
+                      <div className="serif text-3xl">{stats.projects}</div>
+                      <div className="mono text-[10px] uppercase tracking-widest text-[color:var(--color-muted)] mt-1">Projects</div>
+                    </div>
+                    <div>
+                      <div className="serif text-3xl">{stats.technologies}</div>
+                      <div className="mono text-[10px] uppercase tracking-widest text-[color:var(--color-muted)] mt-1">Tech stack</div>
+                    </div>
+                    <div>
+                      <div className="serif text-3xl">{stats.experience}+</div>
+                      <div className="mono text-[10px] uppercase tracking-widest text-[color:var(--color-muted)] mt-1">Yrs shipped</div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="lg:col-span-7 order-2 lg:order-1">
                 <div className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] mb-6 flex items-center gap-3">
                   <span className={settings?.available_for_work ? 'dot-pulse' : 'inline-block w-2 h-2 rounded-full bg-[color:var(--color-subtle)]'} />
                   <span>
@@ -91,27 +111,7 @@ export default function Home() {
                   {settings?.bio || 'Full-Stack Developer building modern, scalable web applications — thoughtful frontend experiences backed by robust APIs, databases, and AI-powered functionality.'}
                 </p>
               </div>
-
-              <div className="lg:col-span-5 lg:pt-8 w-full">
-                <Terminal lines={termLines} />
-                {stats && (
-                  <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-4">
-                    <div>
-                      <div className="serif text-3xl">{stats.projects}</div>
-                    <div className="mono text-[10px] uppercase tracking-widest text-[color:var(--color-muted)] mt-1">Projects</div>
-                  </div>
-                  <div>
-                    <div className="serif text-3xl">{stats.technologies}</div>
-                    <div className="mono text-[10px] uppercase tracking-widest text-[color:var(--color-muted)] mt-1">Tech stack</div>
-                  </div>
-                  <div>
-                    <div className="serif text-3xl">{stats.experience}+</div>
-                    <div className="mono text-[10px] uppercase tracking-widest text-[color:var(--color-muted)] mt-1">Yrs shipped</div>
-                  </div>
-                </div>
-              )}
             </div>
-          </div>
 
           {/* Buttons — below terminal on mobile, inline on desktop */}
           <div className="mt-8 flex flex-wrap gap-3">
