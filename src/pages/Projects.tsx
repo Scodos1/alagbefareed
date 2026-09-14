@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { apiGet } from '../lib/api';
 import type { Project } from '../lib/api';
 import ProjectCard from '../components/ProjectCard';
-import TypeReveal from '../components/motion/TypeReveal';
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -27,7 +26,7 @@ export default function Projects() {
       <section className="max-w-6xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-10 fade-in">
         <div className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] mb-6">Selected work</div>
         <h1 className="serif text-5xl sm:text-6xl leading-[1.02] tracking-tight max-w-3xl">
-          <TypeReveal text="Projects, each one" as="span" /><br />with a <TypeReveal text="reason it exists." as="span" className="italic" />
+          Projects, each one<br />with a <span className="italic">reason it exists.</span>
         </h1>
         <p className="mt-6 text-[color:var(--color-muted)] max-w-xl">
           These are systems I designed, shipped and iterated on — either at companies or under my own name. Filter by discipline or by stack.

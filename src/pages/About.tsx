@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { apiGet } from '../lib/api';
 import type { SiteSettings, Skill, Experience } from '../lib/api';
 import SectionTitle from '../components/SectionTitle';
-import TypeReveal from '../components/motion/TypeReveal';
 
 export default function About() {
   const [settings, setSettings] = useState<SiteSettings | null>(null);
@@ -33,8 +32,7 @@ export default function About() {
       <section className="max-w-3xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-12 fade-in">
         <div className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] mb-6">About</div>
         <h1 className="serif text-5xl sm:text-6xl leading-[1.02] tracking-tight">
-          <TypeReveal text="I build software the way I'd want" as="span" /><br />
-          <TypeReveal text="someone to build it for me." as="span" className="italic" />
+          I build software the way I'd want<br /><span className="italic">someone to build it for me.</span>
         </h1>
       </section>
 

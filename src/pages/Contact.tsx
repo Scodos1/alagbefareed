@@ -3,7 +3,6 @@ import { Mail, Send } from 'lucide-react';
 import { apiGet, apiPost } from '../lib/api';
 import type { SiteSettings } from '../lib/api';
 import { useToast } from '../components/Toast';
-import TypeReveal from '../components/motion/TypeReveal';
 
 export default function Contact() {
   const [settings, setSettings] = useState<SiteSettings | null>(null);
@@ -57,7 +56,7 @@ export default function Contact() {
       <section className="max-w-3xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-12 fade-in">
         <div className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] mb-6">Contact</div>
         <h1 className="serif text-5xl sm:text-6xl leading-[1.02] tracking-tight">
-          <TypeReveal text="Let's talk about" as="span" /><br />the <TypeReveal text="thing you're building." as="span" className="italic" />
+          Let's talk about<br />the <span className="italic">thing you're building.</span>
         </h1>
         <p className="mt-6 text-[color:var(--color-muted)] max-w-xl">
           I read every message. Usually reply within a business day. Prefer email? {settings?.email && (<a className="link-underline" href={`mailto:${settings.email}`}>{settings.email}</a>)}

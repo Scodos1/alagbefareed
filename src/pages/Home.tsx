@@ -7,7 +7,6 @@ import type { Project, Technology, SiteSettings } from '../lib/api';
 import ProjectCard from '../components/ProjectCard';
 import SectionTitle from '../components/SectionTitle';
 import Reveal from '../components/motion/Reveal';
-import TypeReveal from '../components/motion/TypeReveal';
 import Magnetic from '../components/motion/Magnetic';
 import Marquee from '../components/motion/Marquee';
 import Terminal from '../components/motion/Terminal';
@@ -97,17 +96,12 @@ export default function Home() {
                 </span>
               </div>
               <h1 className="serif text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] tracking-tight">
-                <TypeReveal text={settings?.name || 'Alagbe Fareed Adebayo'} as="span" delay={200} /><span className="italic text-[color:var(--color-muted)]"> —</span><br />
-                <TypeReveal text="builds " as="span" delay={900} /><TypeReveal text="scalable" as="span" delay={1100} className="italic text-[color:var(--color-accent)]" />
-                <br /><TypeReveal text="web systems." as="span" delay={1400} />
+                {settings?.name || 'Alagbe Fareed Adebayo'}<span className="italic text-[color:var(--color-muted)]"> —</span><br />
+                builds <span className="italic text-[color:var(--color-accent)]">scalable</span>
+                <br />web systems.
               </h1>
               <p className="mt-8 text-lg sm:text-xl text-[color:var(--color-muted)] max-w-xl leading-relaxed">
-                <TypeReveal
-                  text={settings?.bio || 'Full-Stack Developer building modern, scalable web applications — thoughtful frontend experiences backed by robust APIs, databases, and AI-powered functionality.'}
-                  as="span"
-                  delay={1800}
-                  speed={18}
-                />
+                {settings?.bio || 'Full-Stack Developer building modern, scalable web applications — thoughtful frontend experiences backed by robust APIs, databases, and AI-powered functionality.'}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Magnetic>
