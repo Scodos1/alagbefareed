@@ -87,7 +87,7 @@ export default function Home() {
                       <div className="mono text-[10px] uppercase tracking-widest text-[color:var(--color-muted)] mt-1">Tech stack</div>
                     </div>
                     <div>
-                      <div className="serif text-3xl">{stats.experience}+</div>
+                      <div className="serif text-3xl">1</div>
                       <div className="mono text-[10px] uppercase tracking-widest text-[color:var(--color-muted)] mt-1">Yrs shipped</div>
                     </div>
                   </div>
