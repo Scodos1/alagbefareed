@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { apiGet } from '../lib/api';
 import type { Project, Technology, SiteSettings } from '../lib/api';
@@ -10,8 +10,6 @@ import Reveal from '../components/motion/Reveal';
 import Magnetic from '../components/motion/Magnetic';
 import Marquee from '../components/motion/Marquee';
 import Terminal from '../components/motion/Terminal';
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 const GLYPHS = [
   { ch: '{ }', top: '12%', left: '4%', delay: '0s', rot: '-8deg' },
@@ -56,14 +54,6 @@ export default function Home() {
     { cmd: 'status', out: settings?.availability || 'Available for new opportunities' },
   ];
 
-  const container: Variants = reduce ? {} : { hidden: {}, show: { transition: { staggerChildren: 0.09 } } };
-  const item: Variants = reduce
-    ? {}
-    : {
-        hidden: { opacity: 0, y: 26 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
-      };
-
   return (
     <div>
       {/* HERO */}
@@ -81,55 +71,33 @@ export default function Home() {
             </span>
           ))}
         <div className="relative max-w-6xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-20">
-          <motion.div
-            className="grid lg:grid-cols-12 gap-10 items-start"
-            variants={container}
-            initial="hidden"
-            animate="show"
-          >
-            <motion.div className="lg:col-span-7" variants={item}>
-              <div className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] mb-6 flex items-center gap-3">
-                <span className={settings?.available_for_work ? 'dot-pulse' : 'inline-block w-2 h-2 rounded-full bg-[color:var(--color-subtle)]'} />
-                <span>
-                  <span className="text-[color:var(--color-accent)]">$ </span>
-                  {settings?.availability || 'Available for new opportunities'}
-                </span>
+          <div className="flex flex-col gap-10">
+            {/* Hero text + terminal side by side on desktop */}
+            <div className="grid lg:grid-cols-12 gap-10 items-start">
+              <div className="lg:col-span-7">
+                <div className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] mb-6 flex items-center gap-3">
+                  <span className={settings?.available_for_work ? 'dot-pulse' : 'inline-block w-2 h-2 rounded-full bg-[color:var(--color-subtle)]'} />
+                  <span>
+                    <span className="text-[color:var(--color-accent)]">$ </span>
+                    {settings?.availability || 'Available for new opportunities'}
+                  </span>
+                </div>
+                <h1 className="serif text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] tracking-tight">
+                  {settings?.name || 'Alagbe Fareed Adebayo'}<span className="italic text-[color:var(--color-muted)]"> —</span><br />
+                  builds <span className="italic text-[color:var(--color-accent)]">scalable</span>
+                  <br />web systems.
+                </h1>
+                <p className="mt-8 text-lg sm:text-xl text-[color:var(--color-muted)] max-w-xl leading-relaxed">
+                  {settings?.bio || 'Full-Stack Developer building modern, scalable web applications — thoughtful frontend experiences backed by robust APIs, databases, and AI-powered functionality.'}
+                </p>
               </div>
-              <h1 className="serif text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] tracking-tight">
-                {settings?.name || 'Alagbe Fareed Adebayo'}<span className="italic text-[color:var(--color-muted)]"> —</span><br />
-                builds <span className="italic text-[color:var(--color-accent)]">scalable</span>
-                <br />web systems.
-              </h1>
-              <p className="mt-8 text-lg sm:text-xl text-[color:var(--color-muted)] max-w-xl leading-relaxed">
-                {settings?.bio || 'Full-Stack Developer building modern, scalable web applications — thoughtful frontend experiences backed by robust APIs, databases, and AI-powered functionality.'}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Magnetic>
-                  <Link
-                    to="/projects"
-                    className="group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm font-medium hover:shadow-[0_12px_32px_-12px_color-mix(in_srgb,var(--color-accent)_60%,transparent)] transition-shadow"
-                  >
-                    View selected work
-                    <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-                  </Link>
-                </Magnetic>
-                <Magnetic>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[color:var(--color-border-strong)] text-sm font-medium hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)] transition-colors"
-                  >
-                    Start a conversation
-                  </Link>
-                </Magnetic>
-              </div>
-            </motion.div>
 
-            <motion.aside className="lg:col-span-5 lg:pt-8 w-full" variants={item}>
-              <Terminal lines={termLines} />
-              {stats && (
-                <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-4">
-                  <div>
-                    <div className="serif text-3xl">{stats.projects}</div>
+              <div className="lg:col-span-5 lg:pt-8 w-full">
+                <Terminal lines={termLines} />
+                {stats && (
+                  <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-4">
+                    <div>
+                      <div className="serif text-3xl">{stats.projects}</div>
                     <div className="mono text-[10px] uppercase tracking-widest text-[color:var(--color-muted)] mt-1">Projects</div>
                   </div>
                   <div>
@@ -142,8 +110,30 @@ export default function Home() {
                   </div>
                 </div>
               )}
-            </motion.aside>
-          </motion.div>
+            </div>
+          </div>
+
+          {/* Buttons — below terminal on mobile, inline on desktop */}
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Magnetic>
+              <Link
+                to="/projects"
+                className="group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm font-medium hover:shadow-[0_12px_32px_-12px_color-mix(in_srgb,var(--color-accent)_60%,transparent)] transition-shadow"
+              >
+                View selected work
+                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[color:var(--color-border-strong)] text-sm font-medium hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)] transition-colors"
+              >
+                Start a conversation
+              </Link>
+            </Magnetic>
+          </div>
+        </div>
         </div>
       </section>
 
