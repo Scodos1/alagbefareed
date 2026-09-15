@@ -161,6 +161,13 @@ export default function ProjectEditor() {
 
         <div className="space-y-6">
           <Section title="Status">
+            <Field label="Project status">
+              <select value={form.status || 'completed'} onChange={(e) => update('status', e.target.value)} className={inputClass}>
+                <option value="completed">Completed</option>
+                <option value="in_progress">In Progress</option>
+                <option value="archived">Archived</option>
+              </select>
+            </Field>
             <label className="flex items-center gap-2 text-sm">
               <input type="checkbox" checked={!!form.published} onChange={(e) => update('published', e.target.checked)} />
               Published (visible on site)

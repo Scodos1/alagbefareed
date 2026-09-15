@@ -111,6 +111,11 @@ export default function ProjectCard({ project }: { project: Project }) {
                 Featured
               </span>
             )}
+            {project.status === 'in_progress' && (
+              <span className="absolute top-3 right-3 mono text-[10px] uppercase tracking-widest bg-amber-500 text-white px-2 py-1 rounded">
+                In Progress
+              </span>
+            )}
           </div>
           <div className="p-5">
             <div className="flex items-center justify-between mb-2">

@@ -141,6 +141,7 @@ const projects = [
     project_date: '2025-01-01',
     featured: true,
     published: true,
+    status: 'completed',
   },
   {
     slug: 'stylesbytiwa',

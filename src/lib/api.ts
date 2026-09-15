@@ -59,6 +59,7 @@ export type Project = {
   project_date: string;
   featured: boolean;
   published: boolean;
+  status: 'completed' | 'in_progress' | 'archived';
   created_at: string;
 };
 
