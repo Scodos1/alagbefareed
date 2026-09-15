@@ -114,7 +114,7 @@ const projects = [
     challenges: 'Balancing model accuracy with interpretable results for non-technical users.',
     results: 'Live Streamlit app accessible for diabetes risk screening.',
     lessons_learned: 'ML apps need clear UX to make predictions trustworthy and actionable.',
-    github_url: 'https://github.com/Scodos1',
+    github_url: 'https://github.com/Scodos1/diabetes_prediction',
     live_url: 'https://diabetes-riskpredictions.streamlit.app/',
     project_date: '2024-08-01',
     featured: true,
