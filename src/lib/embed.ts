@@ -1,5 +1,5 @@
 /** Slugs whose live sites allow iframe embedding (no X-Frame-Options / CSP frame-ancestors block). */
-export const LIVE_EMBED_SLUGS: ReadonlySet<string> = new Set(['stylesbytiwa', 'cv-builder']);
+export const LIVE_EMBED_SLUGS: ReadonlySet<string> = new Set(['stylesbytiwa', 'cv-builder', 'diabetes-risk-prediction']);
 
 /** Slugs that need auth/JS too heavy for card embed — detail page only. */
 export const DETAIL_ONLY_EMBED: ReadonlySet<string> = new Set([]);
