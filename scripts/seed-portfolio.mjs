@@ -164,6 +164,28 @@ const projects = [
     featured: true,
     published: true,
   },
+  {
+    slug: 'decisive-sound',
+    name: 'Decisive Sound',
+    tagline: 'Audio streaming and management platform',
+    description: 'Full-stack web application for audio streaming with user authentication, playlist management, and a modern responsive interface.',
+    category: 'Full-Stack',
+    technologies: ['Python', 'Django', 'HTML5', 'CSS3', 'JavaScript', 'PostgreSQL'],
+    image_url: null,
+    screenshots: [],
+    problem: 'Users need a seamless platform to stream and manage audio content.',
+    solution: 'Full-stack Django app with authentication, audio streaming, and responsive UI.',
+    features: ['User authentication', 'Audio streaming', 'Playlist management', 'Responsive design', 'Modern UI'],
+    architecture: 'Django backend → PostgreSQL → HTML/CSS/JS frontend',
+    challenges: 'Building smooth audio playback with a clean user experience.',
+    results: 'Live deployment on Render with full streaming capabilities.',
+    lessons_learned: 'Audio streaming requires careful handling of media files and buffering.',
+    github_url: 'https://github.com/Scodos1',
+    live_url: 'https://decisivesound.onrender.com/',
+    project_date: '2024-10-01',
+    featured: true,
+    published: true,
+  },
 ];
 
 async function upsert(table, rows, onConflict) {
