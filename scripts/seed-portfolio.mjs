@@ -99,6 +99,28 @@ const skills = [
 
 const projects = [
   {
+    slug: 'diabetes-risk-prediction',
+    name: 'Diabetes Risk Prediction',
+    tagline: 'ML-powered diabetes risk assessment tool',
+    description: 'Streamlit web app that predicts diabetes risk using machine learning. Users input health metrics and receive instant risk predictions with explainable results.',
+    category: 'AI & Data',
+    technologies: ['Python', 'Streamlit', 'scikit-learn', 'Pandas', 'Machine Learning'],
+    image_url: null,
+    screenshots: [],
+    problem: 'Early diabetes risk detection is critical but often requires clinical visits.',
+    solution: 'ML model deployed as an interactive Streamlit app for instant risk assessment from health metrics.',
+    features: ['Health metric input form', 'ML risk prediction', 'Model explainability', 'Responsive UI', 'Instant results'],
+    architecture: 'Streamlit frontend → scikit-learn model → Pandas data processing',
+    challenges: 'Balancing model accuracy with interpretable results for non-technical users.',
+    results: 'Live Streamlit app accessible for diabetes risk screening.',
+    lessons_learned: 'ML apps need clear UX to make predictions trustworthy and actionable.',
+    github_url: 'https://github.com/Scodos1',
+    live_url: 'https://diabetes-riskpredictions.streamlit.app/',
+    project_date: '2024-08-01',
+    featured: true,
+    published: true,
+  },
+  {
     slug: 'cv-builder',
     name: 'CV Builder (MONO Studio)',
     tagline: 'AI-powered professional CV builder with live preview',
