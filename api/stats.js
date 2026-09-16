@@ -1,10 +1,14 @@
 import supabase from './db-client.js';
-import { setCors } from './_auth.js';
+import { requireAdmin, setCors, serverError } from './_auth.js';
 
 export default async function handler(req, res) {
-  setCors(res);
+  setCors(req, res);
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+
+  // Private: message counts and draft counts must never be public.
+  const admin = await requireAdmin(req);
+  if (!admin) return res.status(401).json({ error: 'Unauthorized' });
 
   try {
     const [projectsAll, projectsPub, articlesAll, articlesPub, exp, skills, techs, msgs, unread] = await Promise.all([
@@ -31,6 +35,6 @@ export default async function handler(req, res) {
       unread_messages: unread.count || 0,
     });
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    return serverError(res, err, 'stats api error');
   }
 }

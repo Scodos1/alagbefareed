@@ -1,18 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
-import { triggerRestore } from './db-wake.js';
 
+// Server-side only. Uses the SERVICE ROLE key (bypasses RLS) — this module
+// must never be imported by frontend code.
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY,
-  {
-    global: {
-      fetch: async (url, options) => {
-        const res = await fetch(url, options);
-        if (!res.ok && res.status >= 500) triggerRestore();
-        return res;
-      },
-    },
-  }
+  process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
 export default supabase;

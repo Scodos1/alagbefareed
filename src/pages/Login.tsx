@@ -12,7 +12,9 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = (location.state as any)?.from || '/admin';
+  // Only allow internal redirect targets — never an external URL.
+  const rawFrom = (location.state as any)?.from;
+  const from = typeof rawFrom === 'string' && rawFrom.startsWith('/') && !rawFrom.startsWith('//') ? rawFrom : '/admin';
   const { user } = useAuth();
   const googleBtnRef = useRef<HTMLDivElement>(null);
 
