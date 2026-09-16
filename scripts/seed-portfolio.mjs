@@ -42,7 +42,12 @@ const siteSettings = {
   currently_building: 'A Telegram Signal Copier, SME Business Intelligence and customer acquisition',
   availability: 'Available for new opportunities — freelance, contract, and full-time roles.',
   available_for_work: true,
-  social_links: {},
+  social_links: {
+    github: 'https://github.com/Scodos1',
+    linkedin: 'https://www.linkedin.com/in/alagbe-fareed',
+    twitter: 'https://twitter.com/Scodos_',
+    email: 'mailto:alagbefareed@gmail.com'
+  },
   resume_url: null,
 };
 
