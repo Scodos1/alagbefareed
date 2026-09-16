@@ -113,7 +113,6 @@ export default function ProjectDetail() {
           {project.architecture && (<><h2>Architecture</h2><p>{project.architecture}</p></>)}
           {project.challenges && (<><h2>Challenges</h2><p>{project.challenges}</p></>)}
           {project.results && (<><h2>Outcomes</h2><p>{project.results}</p></>)}
-          {project.lessons_learned && (<><h2>What I'd do differently</h2><p>{project.lessons_learned}</p></>)}
         </div>
 
         {project.screenshots && project.screenshots.length > 0 && (
