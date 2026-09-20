@@ -16,6 +16,7 @@ const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 const Experience = lazy(() => import('./pages/Experience'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Login = lazy(() => import('./pages/Login'));
+const Resume = lazy(() => import('./pages/Resume'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const Dashboard = lazy(() => import('./pages/admin/Dashboard'));
@@ -63,6 +64,7 @@ function AnimatedRoutes() {
           <Route path="/projects/:slug" element={<PublicShell><ProjectDetail /></PublicShell>} />
           <Route path="/experience" element={<PublicShell><Experience /></PublicShell>} />
           <Route path="/contact" element={<PublicShell><Contact /></PublicShell>} />
+          <Route path="/resume" element={<PublicShell><Resume /></PublicShell>} />
           <Route path="/login" element={<Login />} />
 
           <Route path="/admin" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />

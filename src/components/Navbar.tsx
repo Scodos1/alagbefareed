@@ -59,12 +59,12 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href="/api/resume"
+          <Link
+            to="/resume"
             className="hidden sm:inline-block text-sm px-3 py-1.5 rounded-md border border-[color:var(--color-border)] hover:border-[color:var(--color-border-strong)] transition-colors"
           >
             Résumé
-          </a>
+          </Link>
           <ThemeToggle />
           {user && (
             <Link
@@ -98,7 +98,7 @@ export default function Navbar() {
                 {item.label}
               </NavLink>
             ))}
-            <a href="/api/resume" className="py-2 text-base text-[color:var(--color-muted)]">Résumé</a>
+            <Link to="/resume" className="py-2 text-base text-[color:var(--color-muted)]">Résumé</Link>
             {user && <Link to="/admin" className="py-2 text-base text-[color:var(--color-accent)]">Admin</Link>}
           </div>
         </div>

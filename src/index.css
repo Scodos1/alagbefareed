@@ -255,3 +255,19 @@ html {
 .boot-scanlines {
   display: none;
 }
+
+/* Print styles for resume */
+@media print {
+  body { background: white !important; color: black !important; }
+  .print\:hidden { display: none !important; }
+  .print\:px-0 { padding-left: 0 !important; padding-right: 0 !important; }
+  .print\:py-0 { padding-top: 0 !important; padding-bottom: 0 !important; }
+  .print\:max-w-none { max-width: none !important; }
+  a { color: black !important; text-decoration: none !important; }
+  .link-underline { background-image: none !important; }
+  .min-h-screen { min-height: auto !important; }
+  .border-b, .border-t, .border { border-color: #ddd !important; }
+  .serif { font-family: Georgia, serif !important; }
+  .mono { font-family: monospace !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
