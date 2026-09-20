@@ -13,27 +13,22 @@ const supabase = createClient(
 );
 
 async function main() {
-  // Add missing columns (idempotent)
-  const alters = [
-    `ALTER TABLE experience ADD COLUMN IF NOT EXISTS location TEXT`,
-    `ALTER TABLE experience ADD COLUMN IF NOT EXISTS responsibilities JSONB DEFAULT '[]'`,
-    `ALTER TABLE experience ADD COLUMN IF NOT EXISTS technologies JSONB DEFAULT '[]'`,
-  ];
-  for (const sql of alters) {
-    const { error } = await supabase.rpc('exec_sql', { query: sql }).single();
-    // rpc may not exist, so just try raw — if it fails, columns probably exist
-  }
-
-  // Delete placeholder experience
   const { error: delErr } = await supabase.from('experience').delete().neq('id', 0);
   if (delErr) { console.error('Delete error:', delErr); process.exit(1); }
-  console.log('Cleared placeholder experience');
+  console.log('Cleared experience');
 
-  // Insert real experience
   const { data, error } = await supabase.from('experience').insert({
     company: 'LASUSTECH',
     role: 'IT Support Intern',
+    location: 'Lagos, Nigeria',
     description: 'Provided technical support and collaborated with a team to build an intern database management system.',
+    responsibilities: [
+      'Provided first-line technical support for hardware, software, and network issues across campus',
+      'Collaborated with a team to design and develop an intern database management system, streamlining intern onboarding and record tracking',
+      'Assisted in system maintenance, user account setup, and routine troubleshooting to ensure operational continuity',
+      'Documented technical procedures and contributed to internal knowledge base resources'
+    ],
+    technologies: ['Database Design', 'Technical Support', 'System Maintenance'],
     start_date: '2025-04-01',
     end_date: '2025-10-31',
     current: false,
