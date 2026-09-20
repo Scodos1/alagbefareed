@@ -68,14 +68,18 @@ export default function Resume() {
   return (
     <>
       {/* Toolbar — hidden on print */}
-      <div className="max-w-3xl mx-auto px-5 sm:px-8 pt-8 print:hidden">
-        <button
-          onClick={() => window.print()}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm"
-        >
-          <Download size={14} /> Download PDF
-        </button>
-      </div>
+      {settings?.resume_url && (
+        <div className="max-w-3xl mx-auto px-5 sm:px-8 pt-8 print:hidden">
+          <a
+            href={settings.resume_url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm"
+          >
+            <Download size={14} /> Download PDF
+          </a>
+        </div>
+      )}
 
       {/* Resume content */}
       <div className="max-w-3xl mx-auto px-5 sm:px-8 py-10 print:px-0 print:py-0 print:max-w-none">
