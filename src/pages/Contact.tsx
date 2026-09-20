@@ -105,12 +105,18 @@ export default function Contact() {
                 />
               </Field>
               <Field label="Message" error={errors.message}>
-                <textarea
-                  value={form.message}
-                  onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-                  rows={4}
-                  className="w-full bg-transparent border-b border-[color:var(--color-border-strong)] py-2 focus:outline-none focus:border-[color:var(--color-accent)] resize-none"
-                />
+                <div className="relative">
+                  <textarea
+                    value={form.message}
+                    onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                    rows={4}
+                    maxLength={5000}
+                    className="w-full bg-transparent border-b border-[color:var(--color-border-strong)] py-2 focus:outline-none focus:border-[color:var(--color-accent)] resize-none"
+                  />
+                  <span className="absolute bottom-1 right-0 mono text-[10px] text-[color:var(--color-subtle)]">
+                    {form.message.length}/5000
+                  </span>
+                </div>
               </Field>
               <button
                 type="submit"

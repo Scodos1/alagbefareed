@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { AuthProvider } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { ToastProvider } from './components/Toast';
@@ -9,23 +9,31 @@ import ProtectedRoute from './components/ProtectedRoute';
 import ScrollProgress from './components/motion/ScrollProgress';
 import BootScreen from './components/BootScreen';
 
-import Home from './pages/Home';
-import About from './pages/About';
-import Projects from './pages/Projects';
-import ProjectDetail from './pages/ProjectDetail';
-import Experience from './pages/Experience';
-import Contact from './pages/Contact';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Projects = lazy(() => import('./pages/Projects'));
+const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
+const Experience = lazy(() => import('./pages/Experience'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Login = lazy(() => import('./pages/Login'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
-import Dashboard from './pages/admin/Dashboard';
-import ProjectsList from './pages/admin/ProjectsList';
-import ProjectEditor from './pages/admin/ProjectEditor';
-import TechnologiesAdmin from './pages/admin/TechnologiesAdmin';
-import SkillsAdmin from './pages/admin/SkillsAdmin';
-import ExperienceAdmin from './pages/admin/ExperienceAdmin';
-import MessagesAdmin from './pages/admin/MessagesAdmin';
-import SettingsAdmin from './pages/admin/SettingsAdmin';
+const Dashboard = lazy(() => import('./pages/admin/Dashboard'));
+const ProjectsList = lazy(() => import('./pages/admin/ProjectsList'));
+const ProjectEditor = lazy(() => import('./pages/admin/ProjectEditor'));
+const TechnologiesAdmin = lazy(() => import('./pages/admin/TechnologiesAdmin'));
+const SkillsAdmin = lazy(() => import('./pages/admin/SkillsAdmin'));
+const ExperienceAdmin = lazy(() => import('./pages/admin/ExperienceAdmin'));
+const MessagesAdmin = lazy(() => import('./pages/admin/MessagesAdmin'));
+const SettingsAdmin = lazy(() => import('./pages/admin/SettingsAdmin'));
+
+function RouteSpinner() {
+  return (
+    <div className="min-h-[50vh] flex items-center justify-center">
+      <div className="w-5 h-5 border-2 border-[color:var(--color-border-strong)] border-t-[color:var(--color-accent)] rounded-full animate-spin" />
+    </div>
+  );
+}
 
 function PublicShell({ children }: { children: React.ReactNode }) {
   return <Layout>{children}</Layout>;
@@ -82,7 +90,9 @@ export default function App() {
           <BrowserRouter>
             <BootScreen>
               <ScrollProgress />
-              <AnimatedRoutes />
+              <Suspense fallback={<RouteSpinner />}>
+                <AnimatedRoutes />
+              </Suspense>
             </BootScreen>
           </BrowserRouter>
         </ToastProvider>
