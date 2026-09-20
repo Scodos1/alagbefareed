@@ -143,7 +143,16 @@ export default function Resume() {
                     <span className="mono text-xs text-[color:var(--color-muted)] whitespace-nowrap">{p.project_date?.slice(0, 4)}</span>
                   </div>
                   {p.tagline && <p className="mt-0.5 text-sm text-[color:var(--color-muted)]">{p.tagline}</p>}
-                  {p.description && <p className="mt-1 text-sm">{p.description}</p>}
+                  {p.description && (
+                    <ul className="mt-1.5 space-y-0.5 text-sm">
+                      {p.description.split(/\.\s+/).filter(Boolean).map((s, i) => (
+                        <li key={i} className="flex gap-2">
+                          <span className="text-[color:var(--color-subtle)] shrink-0">·</span>
+                          <span>{s.replace(/\.$/, '')}.</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   {p.technologies.length > 0 && (
                     <p className="mt-1 mono text-xs text-[color:var(--color-subtle)]">{p.technologies.join(' · ')}</p>
                   )}
