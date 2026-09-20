@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Download, Mail, MapPin } from 'lucide-react';
 import { apiGet } from '../lib/api';
-import type { SiteSettings, Skill, Technology, Project } from '../lib/api';
+import type { SiteSettings, Skill, Technology } from '../lib/api';
 
 type ExpData = {
   id: number;
@@ -35,7 +35,6 @@ export default function Resume() {
   const [skills, setSkills] = useState<Skill[]>([]);
   const [techs, setTechs] = useState<Technology[]>([]);
   const [exps, setExps] = useState<ExpData[]>([]);
-  const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -45,9 +44,8 @@ export default function Resume() {
       apiGet<Skill[]>('/api/skills'),
       apiGet<Technology[]>('/api/technologies'),
       apiGet<ExpData[]>('/api/experience'),
-      apiGet<Project[]>('/api/projects'),
     ])
-      .then(([s, sk, t, ex, p]) => { setSettings(s); setSkills(sk); setTechs(t); setExps(ex); setProjects(p); })
+      .then(([s, sk, t, ex]) => { setSettings(s); setSkills(sk); setTechs(t); setExps(ex); })
       .finally(() => setLoading(false));
   }, []);
 
@@ -126,30 +124,6 @@ export default function Resume() {
                       {e.responsibilities.map((r, i) => <li key={i}>{r}</li>)}
                     </ul>
                   )}
-                </div>
-              ))}
-            </div>
-          </Section>
-        )}
-
-        {/* Projects */}
-        {projects.length > 0 && (
-          <Section title="Projects">
-            <div className="space-y-5">
-              {projects.map((p) => (
-                <div key={p.id}>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <span className="font-medium">{p.name}</span>
-                    <span className="mono text-xs text-[color:var(--color-muted)] whitespace-nowrap">{p.project_date?.slice(0, 4)}</span>
-                  </div>
-                  {p.tagline && <p className="mt-0.5 text-sm text-[color:var(--color-muted)]">{p.tagline}</p>}
-                  {p.technologies.length > 0 && (
-                    <p className="mt-1 mono text-xs text-[color:var(--color-subtle)]">{p.technologies.join(' · ')}</p>
-                  )}
-                  <div className="flex gap-3 mt-1">
-                    {p.live_url && <a href={p.live_url} target="_blank" rel="noreferrer" className="mono text-xs link-underline">Live</a>}
-                    {p.github_url && <a href={p.github_url} target="_blank" rel="noreferrer" className="mono text-xs link-underline">Code</a>}
-                  </div>
                 </div>
               ))}
             </div>
