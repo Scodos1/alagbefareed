@@ -98,8 +98,8 @@ export default function Resume() {
                 <MapPin size={12} /> {settings.location}
               </span>
             )}
-            {social.linkedin && <a href={social.linkedin} target="_blank" rel="noreferrer" className="link-underline">LinkedIn</a>}
             {social.github && <a href={social.github} target="_blank" rel="noreferrer" className="link-underline">GitHub</a>}
+            {social.whatsapp && <a href={social.whatsapp} target="_blank" rel="noreferrer" className="link-underline">WhatsApp</a>}
           </div>
         </header>
 

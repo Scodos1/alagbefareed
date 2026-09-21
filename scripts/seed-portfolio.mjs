@@ -44,7 +44,7 @@ const siteSettings = {
   available_for_work: true,
   social_links: {
     github: 'https://github.com/Scodos1',
-    linkedin: 'https://www.linkedin.com/in/alagbe-fareed',
+    whatsapp: 'https://wa.me/2349124916020',
     twitter: 'https://twitter.com/Scodos_',
     email: 'mailto:alagbefareed@gmail.com'
   },
