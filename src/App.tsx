@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Suspense, lazy, useEffect } from 'react';
+import * as Sentry from '@sentry/react';
 import { AuthProvider } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { ToastProvider } from './components/Toast';
+import Analytics from './components/Analytics';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import ScrollProgress from './components/motion/ScrollProgress';
@@ -84,18 +86,40 @@ function AnimatedRoutes() {
   );
 }
 
+function ErrorFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center px-5">
+      <div className="max-w-sm text-center">
+        <h1 className="serif text-3xl">Something broke.</h1>
+        <p className="text-sm text-[color:var(--color-muted)] mt-3">
+          The error was reported. Try reloading the page.
+        </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-6 px-4 py-2 rounded-md bg-[color:var(--color-fg)] text-[color:var(--color-bg)] text-sm"
+        >
+          Reload
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
         <ToastProvider>
           <BrowserRouter>
-            <BootScreen>
-              <ScrollProgress />
-              <Suspense fallback={<RouteSpinner />}>
-                <AnimatedRoutes />
-              </Suspense>
-            </BootScreen>
+            <Sentry.ErrorBoundary fallback={<ErrorFallback />}>
+              <BootScreen>
+                <ScrollProgress />
+                <Analytics />
+                <Suspense fallback={<RouteSpinner />}>
+                  <AnimatedRoutes />
+                </Suspense>
+              </BootScreen>
+            </Sentry.ErrorBoundary>
           </BrowserRouter>
         </ToastProvider>
       </AuthProvider>

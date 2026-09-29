@@ -31,6 +31,10 @@ export default async function handler(req, res) {
         read: false,
       }).select('id').single();
       if (error) throw error;
+      // Admin email alert — fail-open (message is already saved in DB).
+      sendAdminAlert({ name, email, subject, message }).catch((e) =>
+        console.error('contact alert failed:', e?.message || e)
+      );
       return res.status(201).json({ ok: true, id: data.id });
     }
 
@@ -62,4 +66,26 @@ export default async function handler(req, res) {
   } catch (err) {
     return serverError(res, err, 'contact api error');
   }
+}
+
+// Sends you an email when someone submits the form. Fail-open by design:
+// the message is already saved — a mail failure must never break the UX.
+async function sendAdminAlert({ name, email, subject, message }) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return;
+  const to = process.env.NOTIFY_EMAIL || 'alagbefareed@gmail.com';
+  const from = process.env.RESEND_FROM || 'Portfolio <onboarding@resend.dev>';
+  const safe = (s) => String(s ?? '').slice(0, 5000);
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from,
+      to: [to],
+      subject: `New portfolio message: ${safe(subject).slice(0, 120)}`,
+      text: `From: ${safe(name)} <${safe(email)}>\nSubject: ${safe(subject)}\n\n${safe(message)}`,
+      reply_to: String(email || '').slice(0, 254),
+    }),
+  });
+  if (!res.ok) throw new Error(`resend ${res.status}`);
 }
