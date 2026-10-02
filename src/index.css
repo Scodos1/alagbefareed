@@ -2,8 +2,8 @@
 
 @theme {
   --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
 
   --color-bg: #ffffff;
   --color-surface: #f7f9fc;
@@ -264,7 +264,7 @@ html {
   a { color: black !important; text-decoration: none !important; }
   .link-underline { background-image: none !important; }
   .border-b, .border-t, .border { border-color: #ddd !important; }
-  .serif { font-family: Georgia, serif !important; }
-  .mono { font-family: monospace !important; }
+  .serif { font-family: var(--font-sans) !important; }
+  .mono { font-family: var(--font-sans) !important; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
