@@ -22,7 +22,7 @@ export default function Experience() {
       <section className="max-w-3xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 pb-12 fade-in">
         <div className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] mb-6">CV</div>
         <h1 className="serif text-5xl sm:text-6xl leading-[1.02] tracking-tight">
-          Eight years<br />of <span className="italic">shipping software.</span>
+          One year<br />of <span className="italic">shipping software.</span>
         </h1>
         <p className="mt-6 text-[color:var(--color-muted)]">
           From backend platform teams to founding engineer roles — here's what I've been up to.
