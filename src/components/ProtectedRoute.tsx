@@ -1,19 +1,7 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-
-// Only the site owner's email(s) may enter /admin — matching the backend
-// ADMIN_EMAILS allowlist. Set VITE_ADMIN_EMAILS in Vercel (comma-separated).
-// Falls back to the owner address so a missing env var can't lock you out.
-const FALLBACK_OWNER_EMAIL = 'alagbefareed@gmail.com';
-
-function adminEmails(): string[] {
-  const raw = (import.meta as any).env?.VITE_ADMIN_EMAILS || FALLBACK_OWNER_EMAIL;
-  return String(raw)
-    .split(',')
-    .map((e: string) => e.trim().toLowerCase())
-    .filter(Boolean);
-}
+import { adminEmails } from '../lib/admin';
 
 export default function ProtectedRoute({ children }: { children: ReactNode }) {
   const { user, loading, signOut } = useAuth();

@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import AfLogo from './AfLogo';
 import { useAuth } from '../contexts/AuthContext';
+import { isAdminEmail } from '../lib/admin';
 
 const NAV = [
   { to: '/', label: 'Home', end: true },
@@ -66,7 +67,7 @@ export default function Navbar() {
             Résumé
           </Link>
           <ThemeToggle />
-          {user && (
+          {user && isAdminEmail(user.email) && (
             <Link
               to="/admin"
               className="hidden sm:inline-block text-sm px-3 py-1.5 rounded-md bg-[color:var(--color-fg)] text-[color:var(--color-bg)]"
@@ -99,7 +100,7 @@ export default function Navbar() {
               </NavLink>
             ))}
             <Link to="/resume" className="py-2 text-base text-[color:var(--color-muted)]">Résumé</Link>
-            {user && <Link to="/admin" className="py-2 text-base text-[color:var(--color-accent)]">Admin</Link>}
+            {user && isAdminEmail(user.email) && <Link to="/admin" className="py-2 text-base text-[color:var(--color-accent)]">Admin</Link>}
           </div>
         </div>
       )}
